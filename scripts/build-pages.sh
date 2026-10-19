@@ -11,6 +11,7 @@ cp "${ROOT}/index.html" "${SITE}/index.html"
 cp "${ROOT}/404.html" "${SITE}/404.html"
 cp "${ROOT}/hub.css" "${SITE}/hub.css" 2>/dev/null || true
 cp "${ROOT}/hub.js" "${SITE}/hub.js" 2>/dev/null || true
+cp "${ROOT}/yijia-mango.png" "${SITE}/yijia-mango.png" 2>/dev/null || true
 
 git fetch --prune origin 2>/dev/null || true
 
