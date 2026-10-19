@@ -67,7 +67,7 @@ EOF
 import json
 from pathlib import Path
 p = Path(r"${meta}")
-data = json.loads(p.read_text(encoding="utf-8"))
+data = json.loads(p.read_text(encoding="utf-8-sig"))
 data.setdefault("id", "${slug}")
 data.setdefault("path", "apps/${slug}/")
 print(json.dumps(data, ensure_ascii=False))
