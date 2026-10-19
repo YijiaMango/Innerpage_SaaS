@@ -75,11 +75,12 @@ a.app .id {
 a.app .title {
   margin: 0.4rem 0 0.3rem;
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--accent);
 }
 a.app .desc {
   margin: 0;
-  color: var(--muted);
+  color: var(--fg);
   font-size: 0.88rem;
   line-height: 1.45;
 }

@@ -14,7 +14,6 @@
     const frag = document.createDocumentFragment();
     apps
       .slice()
-      .sort((a, b) => String(a.title || a.id).localeCompare(String(b.title || b.id), "zh-Hant"))
       .forEach((app) => {
         const a = document.createElement("a");
         a.className = "app";
