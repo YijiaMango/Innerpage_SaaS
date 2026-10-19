@@ -1,5 +1,3 @@
-# Yijia Mango
-
 <p align="center">
   <img src="./YijiaMango.png" alt="Yijia Mango" width="420" />
 </p>
