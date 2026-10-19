@@ -1,7 +1,7 @@
 # Yijia Mango
 
 <p align="center">
-  <img src="./yijia-mango.png" alt="Yijia Mango" width="420" />
+  <img src="./YijiaMango.png" alt="Yijia Mango" width="420" />
 </p>
 
 | 名稱 | 連結 |
