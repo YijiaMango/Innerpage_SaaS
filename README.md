@@ -1,21 +1,64 @@
 # Innerpage_SaaS
 
-穩定入口跳板：分享這個固定網址，實際服務位址變了只改轉發目標。
+多 SaaS 穩定入口跳板。**一應用一分支**，Pages 自動彙整成目錄。
 
-## 穩定網址（啟用 Pages 後）
+## 穩定網址
+
+| 用途 | URL |
+|------|-----|
+| 目錄 Hub | https://yijiamango.github.io/Innerpage_SaaS/ |
+| 單一應用 | https://yijiamango.github.io/Innerpage_SaaS/apps/`<名稱>`/ |
+
+## 分支框架
 
 ```
-https://yijiamango.github.io/Innerpage_SaaS/
+main              → Hub（目錄頁）+ 建置腳本 + Actions
+app/_template     → 新應用模板（勿當正式服務）
+app/imaginator    → Yijia imaginator（範例）
+app/<你的應用>     → 之後每個 SaaS 一支
 ```
 
-## 更新轉發目標
+### 新增應用
 
-1. 編輯 [`redirect.config.js`](./redirect.config.js)
-2. 改 `TARGET_URL` 為目前 Gemini / 部署實際網址
-3. `git add redirect.config.js && git commit -m "redirect: update target" && git push`
+```bash
+git fetch origin
+git checkout -b app/my-tool origin/app/_template
+# 編輯 app.json、redirect.config.js
+git add -A
+git commit -m "app/my-tool: init"
+git push -u origin app/my-tool
+```
 
-## 啟用 GitHub Pages
+Push 後 Actions 會把 `app/my-tool` 打進 `apps/my-tool/`。
 
-Repo → **Settings** → **Pages** → Source 選 **Deploy from a branch** → Branch: `main` / `/ (root)` → Save
+### 更新轉發目標
 
-約 1 分鐘後穩定網址即可用。
+```bash
+git checkout app/imaginator
+# 只改 redirect.config.js 的 TARGET_URL
+git commit -am "redirect: update target"
+git push
+```
+
+### 命名規則
+
+- 分支：`app/<slug>`
+- `slug`：小寫英文、數字、`-` / `_`（例：`imaginator`、`webrtc-hub`）
+- 勿使用 `app/_template` 以外、底線開頭的正式名稱
+
+## 每個應用分支應有檔案
+
+| 檔案 | 說明 |
+|------|------|
+| `app.json` | id / title / description / version |
+| `redirect.config.js` | `TARGET_URL` 實際服務網址 |
+| `index.html` | 轉發頁（可從 `_shared/redirect.html` 複製） |
+| `404.html` | 可選 |
+
+## 本機預覽建置
+
+```bash
+# 需已 fetch 所有 origin/app/*
+bash scripts/build-pages.sh
+# 輸出在 _site/
+```

@@ -3,131 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Innerpage SaaS — Redirect</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <style>
-    :root {
-      --bg: #0f1419;
-      --fg: #e7ecf1;
-      --muted: #8b98a5;
-      --accent: #3d9a6a;
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      background: radial-gradient(1200px 600px at 20% -10%, #1a2a22 0%, var(--bg) 55%);
-      color: var(--fg);
-      font-family: "Segoe UI", "Noto Sans TC", system-ui, sans-serif;
-    }
-    main {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 2rem;
-      text-align: center;
-    }
-    .card {
-      max-width: 28rem;
-    }
-    .brand {
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-    h1 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 0 0 0.5rem;
-    }
-    p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-    a {
-      color: var(--accent);
-      word-break: break-all;
-    }
-    .spinner {
-      width: 1.5rem;
-      height: 1.5rem;
-      margin: 1.25rem auto 0;
-      border: 2px solid #2a3a32;
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .err { color: #e07070; display: none; margin-top: 1rem; }
-  </style>
-  <script src="./redirect.config.js"></script>
-  <script>
-    (function () {
-      function buildTarget(cfg) {
-        var base = (cfg.TARGET_URL || "").trim();
-        if (!base || /REPLACE_WITH_YOUR/i.test(base) || base === "https://example.com/") {
-          return null;
-        }
-        if (!cfg.PRESERVE_QUERY_AND_HASH) return base;
-        try {
-          var u = new URL(base);
-          var here = new URL(window.location.href);
-          here.searchParams.forEach(function (v, k) {
-            if (!u.searchParams.has(k)) u.searchParams.set(k, v);
-          });
-          if (here.hash && !u.hash) u.hash = here.hash;
-          return u.toString();
-        } catch (e) {
-          return base + window.location.search + window.location.hash;
-        }
-      }
-
-      function go() {
-        var cfg = window.INNERPAGE_REDIRECT || {};
-        var target = buildTarget(cfg);
-        var status = document.getElementById("status");
-        var link = document.getElementById("manual");
-        var err = document.getElementById("err");
-        var spin = document.getElementById("spin");
-
-        if (!target) {
-          spin.style.display = "none";
-          err.style.display = "block";
-          status.textContent = "尚未設定轉發目標";
-          return;
-        }
-
-        link.href = target;
-        link.textContent = target;
-        status.textContent = "正在前往服務…";
-
-        var delay = Math.max(0, Number(cfg.DELAY_MS) || 0);
-        window.setTimeout(function () {
-          window.location.replace(target);
-        }, delay);
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", go);
-      } else {
-        go();
-      }
-    })();
-  </script>
+  <title>Innerpage SaaS</title>
+  <meta name="description" content="YijiaMango SaaS 穩定入口目錄" />
+  <link rel="stylesheet" href="./hub.css" />
 </head>
 <body>
-  <main>
-    <div class="card">
-      <div class="brand">Innerpage SaaS</div>
-      <h1 id="status">準備轉發</h1>
-      <p>若未自動跳轉，請點：<br /><a id="manual" href="#">開啟服務</a></p>
-      <div class="spinner" id="spin" aria-hidden="true"></div>
-      <p class="err" id="err">請編輯 <code>redirect.config.js</code> 的 <code>TARGET_URL</code> 後 push 到 GitHub。</p>
-    </div>
-  </main>
+  <div class="wrap">
+    <div class="eyebrow">Innerpage SaaS</div>
+    <h1>服務入口目錄</h1>
+    <p class="lead">
+      固定網址不變；每個應用各自一支 <code>app/&lt;名稱&gt;</code> 分支。
+      更新實際部署位址時，只改該分支的 <code>redirect.config.js</code>。
+    </p>
+    <div id="status" class="empty">載入中…</div>
+    <div class="grid" id="apps"></div>
+    <footer>
+      Hub: <code>https://yijiamango.github.io/Innerpage_SaaS/</code><br />
+      應用: <code>…/apps/&lt;名稱&gt;/</code>
+    </footer>
+  </div>
+  <script src="./hub.js"></script>
 </body>
 </html>
