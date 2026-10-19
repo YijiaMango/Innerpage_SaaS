@@ -7,7 +7,9 @@
 | 用途 | URL |
 |------|-----|
 | 目錄 Hub | https://yijiamango.github.io/Innerpage_SaaS/ |
-| 單一應用 | https://yijiamango.github.io/Innerpage_SaaS/apps/`<名稱>`/ |
+| 單一應用 | https://yijiamango.github.io/Innerpage_SaaS/`<名稱>`/ |
+
+例：https://yijiamango.github.io/Innerpage_SaaS/imaginator/
 
 ## 分支框架
 
@@ -17,6 +19,8 @@ app/_template     → 新應用模板（勿當正式服務）
 app/imaginator    → Yijia imaginator（範例）
 app/<你的應用>     → 之後每個 SaaS 一支
 ```
+
+Git 分支用 `app/<名稱>` 區隔；**對外網址沒有 `/apps/` 這層**，直接是 `/<名稱>/`。
 
 ### 新增應用
 
@@ -29,7 +33,7 @@ git commit -m "app/my-tool: init"
 git push -u origin app/my-tool
 ```
 
-Push 後 Actions 會把 `app/my-tool` 打進 `apps/my-tool/`。
+Push 後 Actions 會發布到 `/my-tool/`。
 
 ### 更新轉發目標
 
@@ -43,8 +47,9 @@ git push
 ### 命名規則
 
 - 分支：`app/<slug>`
+- 網址：`/<slug>/`
 - `slug`：小寫英文、數字、`-` / `_`（例：`imaginator`、`webrtc-hub`）
-- 勿使用 `app/_template` 以外、底線開頭的正式名稱
+- 保留字勿用：`index`、`hub`、`catalog`、`404`
 
 ## 每個應用分支應有檔案
 

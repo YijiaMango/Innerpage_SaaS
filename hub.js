@@ -2,7 +2,7 @@
   const grid = document.getElementById("apps");
   const status = document.getElementById("status");
   try {
-    const res = await fetch("./apps/catalog.json", { cache: "no-store" });
+    const res = await fetch("./catalog.json", { cache: "no-store" });
     if (!res.ok) throw new Error("catalog HTTP " + res.status);
     const apps = await res.json();
     if (!Array.isArray(apps) || apps.length === 0) {
@@ -18,7 +18,7 @@
       .forEach((app) => {
         const a = document.createElement("a");
         a.className = "app";
-        a.href = "./" + (app.path || ("apps/" + app.id + "/"));
+        a.href = "./" + (app.path || (app.id + "/"));
         a.innerHTML =
           '<div class="id">' + escapeHtml(app.id || "") + "</div>" +
           '<div class="title">' + escapeHtml(app.title || app.id || "untitled") + "</div>" +
