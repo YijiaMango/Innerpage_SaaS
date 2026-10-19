@@ -1,19 +1,16 @@
 :root {
-  --bg: #f4f6f4;
-  --fg: #1a1f1c;
-  --muted: #5c6a62;
-  --accent: #2f7a52;
-  --line: #d5ddd7;
-  --card: #ffffff;
+  --bg: #121517;
+  --fg: #e7ecf1;
+  --muted: #8b98a5;
+  --accent: #3d9a6a;
+  --line: #2a3238;
+  --card: #1a1f24;
 }
 * { box-sizing: border-box; }
 html, body {
   margin: 0;
   min-height: 100%;
-  background:
-    radial-gradient(900px 420px at 12% -10%, #e8efe9 0%, transparent 55%),
-    radial-gradient(700px 360px at 92% 0%, #e6ecf0 0%, transparent 50%),
-    var(--bg);
+  background: var(--bg);
   color: var(--fg);
   font-family: "Segoe UI", "Noto Sans TC", system-ui, sans-serif;
 }
@@ -23,18 +20,14 @@ html, body {
   padding: 3rem 0 4rem;
 }
 .brand {
-  margin: 0 0 1.25rem;
+  margin: 0 0 2rem;
 }
 .logo {
   display: block;
-  width: min(420px, 100%);
+  width: min(480px, 100%);
   height: auto;
-}
-.lead {
-  margin: 0 0 2rem;
-  color: var(--muted);
-  max-width: 38rem;
-  line-height: 1.6;
+  aspect-ratio: 1146 / 465;
+  object-fit: contain;
 }
 .grid {
   display: grid;
@@ -83,5 +76,6 @@ a.app .meta {
   border: 1px dashed var(--line);
   border-radius: 12px;
   padding: 1.25rem;
+  margin-bottom: 1rem;
 }
-.err { color: #b04040; }
+.err { color: #e07070; }
