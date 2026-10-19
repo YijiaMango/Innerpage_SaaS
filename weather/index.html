@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yijia Mango</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root {
+      --bg: #121517;
+      --fg: #e7ecf1;
+      --muted: #8b98a5;
+      --accent: #3d9a6a;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Segoe UI", "Noto Sans TC", system-ui, sans-serif;
+    }
+    main {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    .logo {
+      display: block;
+      width: min(420px, 88vw);
+      height: auto;
+      aspect-ratio: 1146 / 465;
+      object-fit: contain;
+      margin: 0 auto 1.25rem;
+    }
+    h1 { font-size: 1.15rem; font-weight: 600; margin: 0 0 0.5rem; }
+    p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+    a { color: var(--accent); word-break: break-all; }
+    .spinner {
+      width: 1.5rem; height: 1.5rem; margin: 1.25rem auto 0;
+      border: 2px solid #2a3238; border-top-color: var(--accent);
+      border-radius: 50%; animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .err { color: #e07070; display: none; margin-top: 1rem; }
+  </style>
+  <script src="./redirect.config.js"></script>
+  <script>
+    (function () {
+      function buildTarget(cfg) {
+        var base = (cfg.TARGET_URL || "").trim();
+        if (!base || /REPLACE_WITH_YOUR/i.test(base)) return null;
+        if (!cfg.PRESERVE_QUERY_AND_HASH) return base;
+        try {
+          var u = new URL(base);
+          var here = new URL(window.location.href);
+          here.searchParams.forEach(function (v, k) {
+            if (!u.searchParams.has(k)) u.searchParams.set(k, v);
+          });
+          if (here.hash && !u.hash) u.hash = here.hash;
+          return u.toString();
+        } catch (e) {
+          return base + window.location.search + window.location.hash;
+        }
+      }
+      function go() {
+        var cfg = window.INNERPAGE_REDIRECT || {};
+        var target = buildTarget(cfg);
+        var status = document.getElementById("status");
+        var link = document.getElementById("manual");
+        var err = document.getElementById("err");
+        var spin = document.getElementById("spin");
+        if (!target) {
+          spin.style.display = "none";
+          err.style.display = "block";
+          status.textContent = "尚未設定轉發目標";
+          return;
+        }
+        link.href = target;
+        link.textContent = target;
+        status.textContent = "正在前往服務…";
+        var delay = Math.max(0, Number(cfg.DELAY_MS) || 0);
+        window.setTimeout(function () { window.location.replace(target); }, delay);
+      }
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", go);
+      else go();
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <div>
+      <img class="logo" src="../YijiaMango.png" alt="Yijia Mango" width="1146" height="465" />
+      <h1 id="status">準備轉發</h1>
+      <p>若未自動跳轉，請點：<br /><a id="manual" href="#">開啟服務</a></p>
+      <div class="spinner" id="spin" aria-hidden="true"></div>
+      <p class="err" id="err">請設定 <code>TARGET_URL</code> 後再試。</p>
+    </div>
+  </main>
+</body>
+</html>
