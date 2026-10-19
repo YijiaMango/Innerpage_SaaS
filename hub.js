@@ -6,7 +6,7 @@
     if (!res.ok) throw new Error("catalog HTTP " + res.status);
     const apps = await res.json();
     if (!Array.isArray(apps) || apps.length === 0) {
-      status.textContent = "尚無應用。從 app/_template 建立新分支後 push 即可。";
+      status.textContent = "尚無應用。";
       status.className = "empty";
       return;
     }
@@ -31,7 +31,7 @@
       });
     grid.appendChild(frag);
   } catch (e) {
-    status.textContent = "無法載入應用目錄（可能 Pages 尚未完成建置）。";
+    status.textContent = "無法載入應用目錄。";
     status.className = "err";
     console.error(e);
   }
