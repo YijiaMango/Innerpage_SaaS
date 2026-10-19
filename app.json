@@ -3,5 +3,5 @@
   "title": "Yijia imaginator",
   "description": "影像生成 SaaS（Gemini / FLUX）",
   "version": "261017",
-  "path": "apps/imaginator/"
+  "path": "imaginator/"
 }
