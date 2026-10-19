@@ -2,7 +2,7 @@
   <img src="./YijiaMango.png" alt="Yijia Mango" width="420" />
 </p>
 
-| 名稱 | 連結 |
-|------|------|
-| 首頁 | https://yijiamango.github.io/Innerpage_SaaS/ |
-| Yijia imaginator | https://yijiamango.github.io/Innerpage_SaaS/imaginator/ |
+<p align="center">
+  <a href="https://yijiamango.github.io/Innerpage_SaaS/">首頁</a><br />
+  <a href="https://yijiamango.github.io/Innerpage_SaaS/imaginator/">Yijia imaginator</a>
+</p>
