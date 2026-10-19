@@ -66,14 +66,8 @@ a.app:active {
     transform: translateY(-2px);
   }
 }
-a.app .id {
-  font-size: 0.7rem;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
 a.app .title {
-  margin: 0.4rem 0 0.3rem;
+  margin: 0 0 0.3rem;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--accent);

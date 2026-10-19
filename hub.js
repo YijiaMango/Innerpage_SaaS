@@ -19,7 +19,6 @@
         a.className = "app";
         a.href = "./" + (app.path || (app.id + "/"));
         a.innerHTML =
-          '<div class="id">' + escapeHtml(app.id || "") + "</div>" +
           '<div class="title">' + escapeHtml(app.title || app.id || "untitled") + "</div>" +
           '<p class="desc">' + escapeHtml(app.description || "穩定入口跳板") + "</p>" +
           '<div class="meta">' +
