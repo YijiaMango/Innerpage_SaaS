@@ -7,16 +7,16 @@
   <meta name="robots" content="noindex, nofollow" />
   <style>
     :root {
-      --bg: #f4f6f4;
-      --fg: #1a1f1c;
-      --muted: #5c6a62;
-      --accent: #2f7a52;
+      --bg: #121517;
+      --fg: #e7ecf1;
+      --muted: #8b98a5;
+      --accent: #3d9a6a;
     }
     * { box-sizing: border-box; }
     html, body {
       margin: 0;
       min-height: 100%;
-      background: radial-gradient(1000px 520px at 20% -10%, #e8efe9 0%, var(--bg) 55%);
+      background: var(--bg);
       color: var(--fg);
       font-family: "Segoe UI", "Noto Sans TC", system-ui, sans-serif;
     }
@@ -40,11 +40,11 @@
     a { color: var(--accent); word-break: break-all; }
     .spinner {
       width: 1.5rem; height: 1.5rem; margin: 1.25rem auto 0;
-      border: 2px solid #d5ddd7; border-top-color: var(--accent);
+      border: 2px solid #2a3238; border-top-color: var(--accent);
       border-radius: 50%; animation: spin 0.7s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .err { color: #b04040; display: none; margin-top: 1rem; }
+    .err { color: #e07070; display: none; margin-top: 1rem; }
   </style>
   <script src="./redirect.config.js"></script>
   <script>
