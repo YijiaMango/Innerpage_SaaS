@@ -13,69 +13,98 @@ html, body {
   background: var(--bg);
   color: var(--fg);
   font-family: "Segoe UI", "Noto Sans TC", system-ui, sans-serif;
+  -webkit-text-size-adjust: 100%;
 }
 .wrap {
-  width: min(920px, calc(100% - 2.5rem));
+  width: min(420px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 3rem 0 4rem;
+  padding: max(2rem, env(safe-area-inset-top)) 0 max(3rem, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .brand {
-  margin: 0 0 2rem;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  display: flex;
+  justify-content: center;
 }
 .logo {
   display: block;
-  width: min(480px, 100%);
+  width: 100%;
+  max-width: 360px;
   height: auto;
   aspect-ratio: 1146 / 465;
   object-fit: contain;
 }
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.85rem;
 }
 a.app {
   display: block;
+  width: 100%;
   text-decoration: none;
   color: inherit;
+  text-align: center;
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 1.15rem 1.2rem 1.25rem;
+  border-radius: 14px;
+  padding: 1.1rem 1.15rem 1.2rem;
   transition: border-color 0.15s ease, transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
-a.app:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+a.app:active {
+  transform: scale(0.98);
+}
+@media (hover: hover) {
+  a.app:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
 }
 a.app .id {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--accent);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 a.app .title {
-  margin: 0.45rem 0 0.35rem;
+  margin: 0.4rem 0 0.3rem;
   font-size: 1.05rem;
   font-weight: 600;
 }
 a.app .desc {
   margin: 0;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   line-height: 1.45;
-  min-height: 2.6em;
 }
 a.app .meta {
-  margin-top: 0.85rem;
-  font-size: 0.78rem;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
   color: var(--muted);
 }
 .empty, .err {
+  width: 100%;
+  text-align: center;
   color: var(--muted);
   border: 1px dashed var(--line);
-  border-radius: 12px;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
+  border-radius: 14px;
+  padding: 1.1rem;
+  margin-bottom: 0.85rem;
 }
 .err { color: #e07070; }
+
+@media (min-width: 720px) {
+  .wrap {
+    width: min(480px, calc(100% - 2.5rem));
+    padding-top: 3.5rem;
+  }
+  .logo {
+    max-width: 420px;
+  }
+}

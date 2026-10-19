@@ -25,7 +25,6 @@
           '<p class="desc">' + escapeHtml(app.description || "穩定入口跳板") + "</p>" +
           '<div class="meta">' +
             escapeHtml(app.version ? "v." + app.version : "入口") +
-            " · 點擊進入" +
           "</div>";
         frag.appendChild(a);
       });
