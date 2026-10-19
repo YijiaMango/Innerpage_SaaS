@@ -3,6 +3,11 @@
 </p>
 
 <p align="center">
-  <a href="https://yijiamango.github.io/Innerpage_SaaS/">首頁</a><br />
-  <a href="https://yijiamango.github.io/Innerpage_SaaS/imaginator/">Yijia imaginator</a>
+  <strong>首頁</strong><br />
+  <a href="https://yijiamango.github.io/Innerpage_SaaS/">https://yijiamango.github.io/Innerpage_SaaS/</a>
+</p>
+
+<p align="center">
+  <strong>Yijia imaginator</strong><br />
+  <a href="https://yijiamango.github.io/Innerpage_SaaS/imaginator/">https://yijiamango.github.io/Innerpage_SaaS/imaginator/</a>
 </p>
